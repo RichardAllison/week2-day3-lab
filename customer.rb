@@ -13,20 +13,22 @@ class Customer
     return @wallet > desired_drink.price
   end
 
-  def add_drink_to_customer(pub, drink)
-    if can_afford(drink)
-      @drinks_bought << drink
+  def customer_buy_drink(pub, drink)
+    if pub.drink_exists?(drink) && can_afford?(pub, drink)
+        @drinks_bought << pub.remove_drink(drink)
+        @wallet -= drink.price
+        pub.add_drink_price_to_till(drink)
     end
-    # @drinks_bought << pub.remove_drink(drink) if pub.drinks_stock.include?(drink)
   end
 
-  def reduce_wallet_by_price(drink)
-    @wallet -= drink.price
-  end
+  # def reduce_wallet_by_price(pub, drink)
+  #   @wallet -= drink.price
+  # end
 
-  def buy_drink(pub, drink)
-    pub.add_drink_price_to_till(drink)
-  end
+  # def buy_drink(pub, drink)
+  #
+  #   pub.add_drink_price_to_till(drink)
+  # end
 
 #   if can_afford?(drink)
 #   pub.remove_drink(drink)

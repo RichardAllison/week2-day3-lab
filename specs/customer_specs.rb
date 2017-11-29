@@ -1,5 +1,7 @@
-# A Customer should have a name, and a wallet
-# A Customer should be able to buy a Drink from the Pub, reducing the money in its wallet and increasing the money in the Pub's till
+# Add an age to the Customer. Make sure the Pub checks the age before serving the Customer.
+# Add alcohol_level to the Drink, and a drunkenness level to the Customer. Every time a Customer buys a drink, the drunkenness level should go up by the alcohol_level.
+# Pub should refuse service above a certain level of drunkenness!
+
 
 
 require('minitest/autorun')
@@ -29,14 +31,15 @@ class CustomerTest < MiniTest::Test
     assert_equal(50, @customer.wallet)
   end
 
-  # def test_add_drink_to_customer
-  #   @customer.add_drink_to_customer(@pub, )
-  #   assert_equal(1, @customer.drinks_bought.length)
-  #   p @customer.drinks_bought
-  # end
+  def test_add_drink_to_customer_reduce_wallet
+    @customer.customer_buy_drink(@pub, @wine)
+    assert_equal(1, @customer.drinks_bought.length)
+    assert_equal(30, @customer.wallet)
+    assert_equal(120, @pub.till_value)
+  end
 
   # def test_add_drink_to_customer
-  #   @customer.add_drink_to_customer(@gin)
+  #   @customer.add_drink_to_customer(@pub, @gin)
   #   assert_equal(0, @customer.drinks_bought.length)
   # end
 
