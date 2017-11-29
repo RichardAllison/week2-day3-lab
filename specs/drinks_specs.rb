@@ -12,15 +12,15 @@ class DrinkTest < MiniTest::Test
 
   def setup()
     @drinks = Drink.new("Budweiser", 10)
-end
+  end
 
-def  test_name
-  assert_equal("Budweiser", @drinks.name)
-end
+  def  test_name
+    assert_equal("Budweiser", @drinks.name)
+  end
 
-def  test_price
-  assert_equal(10, @drinks.price)
-end
+  def  test_price
+    assert_equal(10, @drinks.price)
+  end
 
 
 end
