@@ -21,15 +21,18 @@ class Pub
     return "Drink Not Found"
   end
 
-  def remove_drink(drink_object)
-    if drink_exists?(drink_object)
-      drink_sold = identify_drink(drink_object)
-      @drinks_stock.delete(drink_sold)
-    end
+
+
+def check_age?(customer)
+  customer.age > 18
+end
+
+def remove_drink(drink_object, customer)
+  if drink_exists?(drink_object) && check_age?(customer) && (customer.drunkenness < 20)
+    drink_sold = identify_drink(drink_object)
+    @drinks_stock.delete(drink_sold)
   end
-
-
-
+end
 
   #   if drink_exists?(drink_object)
   #     for drink in @drinks_stock
