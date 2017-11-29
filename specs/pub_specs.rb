@@ -5,7 +5,7 @@ require('minitest/rg')
 require_relative('../pub.rb')
 require_relative('../drinks.rb')
 require_relative('../customer.rb')
-
+require_relative('../food.rb')
 
 
 class PubTest < MiniTest::Test
@@ -15,7 +15,7 @@ class PubTest < MiniTest::Test
     @vodka = Drink.new("Smirnoff", 30, 40)
     @wine = Drink.new("Cabarnet", 20, 15)
     @drinks = [@beer, @vodka, @wine]
-    @pub = Pub.new("Weatherspoons", 100, @drinks)
+    @pub = Pub.new("Weatherspoons", 100, @drinks, [])
     @customer = Customer.new("Vishal", 50, 29)
   end
 
